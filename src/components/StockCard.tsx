@@ -22,7 +22,7 @@ const StockCard = () => {
           </CardContent>
         </div>
         <div className=" flex items-center justify-center">
-          <CardFooter />
+          <CardFooter>
             <div>
               <img src="https://static.vecteezy.com/system/resources/previews/008/505/869/original/candlestick-graph-bar-design-stock-market-business-concept-png.png" alt="chart" />
             </div>
