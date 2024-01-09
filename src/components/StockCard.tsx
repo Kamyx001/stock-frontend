@@ -29,8 +29,11 @@ const StockCard = (({className, shortName, name, priceHistory, currentPrice}: St
     if (!priceHistory) {
       priceHistory = [0, 0]
     }
-    const firstPrice = priceHistory[priceHistory.length - 2]
-    const lastPrice = priceHistory[priceHistory.length - 1]
+    if (!currentPrice) {
+      currentPrice = priceHistory[priceHistory.length - 1]
+    }
+    const firstPrice = priceHistory[priceHistory.length - 1]
+    const lastPrice = currentPrice;
     gain = (lastPrice - firstPrice) / firstPrice
     gain = Math.round(gain * 10000) / 100
     setGain(gain)

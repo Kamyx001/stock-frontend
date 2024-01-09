@@ -3,6 +3,8 @@ import api from '@/api/axiosConfig'
 import { Link } from 'react-router-dom'
 import CardGrid from '@/components/CardGrid'
 import StockCard from '@/components/StockCard'
+import StockCardSkeleton from '@/components/StockCardSkeleton'
+import NavBar from '@/components/NavBar'
 
 const LandingPage = () => {
 
@@ -24,12 +26,24 @@ const LandingPage = () => {
 
   return (
     <div>
+      <NavBar />
       <CardGrid>
-        {stocks.map((stock: any) => (
+        {stocks.length!=0?stocks.map((stock: any) => (
           <Link to={`/stocks/${stock.shortName}`} key={stock.shortName}>
             <StockCard key={stock.shortName} shortName={stock.shortName} name={stock.name} priceHistory={stock.priceHistory} currentPrice={stock.currentPrice}  />
           </Link>
-        ))}
+        )):
+        <>
+          <StockCardSkeleton />
+          <StockCardSkeleton />
+          <StockCardSkeleton />
+          <StockCardSkeleton />
+          <StockCardSkeleton />
+          <StockCardSkeleton />
+          <StockCardSkeleton />
+          <StockCardSkeleton />
+        </>
+        }
       </CardGrid>
     </div>
   )
