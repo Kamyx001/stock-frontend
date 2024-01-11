@@ -1,0 +1,72 @@
+import axios from 'axios';
+import React, { useState } from 'react'
+import Chart from 'react-google-charts'
+
+type StockChartProps = {
+  priceHistory: number[];
+  currentPrice: number;
+  numOfBars: number;
+}
+
+const StockChart = ({priceHistory, currentPrice, numOfBars}: StockChartProps) => {
+
+  
+  const data = []
+  data.push(["", "", "", "", ""])
+  // for (let i = 0; i < priceHistory.length/4; i++) {
+  //   const barData =[];
+  //   for (let j = 0; j < 4; j++) {
+  //     if(priceHistory[i*4+j]===undefined) break;
+  //     barData.push(priceHistory[i*4+j])
+  //   }
+  //   console.log(barData);
+  //   const low = Math.min(...barData)
+  //   const high = Math.max(...barData)
+  //   const open = barData[0]
+  //   const close = barData[barData.length-1]
+  //   data.push([`${i}`, low, open, close, high])
+  // }
+
+  
+  if (priceHistory.length < numOfBars) {
+    for(let i=0; i<numOfBars-priceHistory.length; i++) {
+      data.push([`${i}`, 0, 0, 0, 0])
+    }
+  }
+
+  for (let i = Math.min(priceHistory.length,numOfBars); i > 0; i--) {
+    const date = (new Date(((new Date()).getTime())-50000*i))
+    data.push([`${date.getHours()}:${date.getMinutes()}`, priceHistory[i+1], priceHistory[i+1], priceHistory[i], priceHistory[i]])
+  }
+
+  console.log(data)
+
+  const options = {
+    seriesType: 'candlesticks',
+    // series: {0: {type: 'line'}},
+    legend: "none",
+    bar: { groupWidth: "90%" }, // Remove space between bars.
+    candlestick: {
+      fallingColor: { stroke: "#a52719", strokeWidth: 0, fill: "#eb1000" }, // red
+      risingColor: { stroke: "#0f9d32", strokeWidth: 0, fill: "#0eba50" }, // green
+    },
+    backgroundColor: "transparent",
+  };
+
+  return (
+    <div>
+      {/* {chartData} */}
+      {currentPrice}
+      <Chart 
+        width={'80vw'}
+        height={'80vh'}
+        chartType="CandlestickChart"
+        loader={<div>Loading Chart</div>}
+        data={data}
+        options={options}
+      />
+    </div>
+  )
+}
+
+export default StockChart

@@ -13,11 +13,10 @@ import CandlestickChart from "./CandlestickChart"
 
 type StockCardProps = {
   className?: string
-  shortName?: string
-  name?: string
-  desctiption?: string
-  priceHistory?: number[]
-  currentPrice?: number
+  shortName: string
+  name: string
+  priceHistory: number[]
+  currentPrice: number
 }
 
 const StockCard = (({className, shortName, name, priceHistory, currentPrice}: StockCardProps) => {
@@ -42,7 +41,13 @@ const StockCard = (({className, shortName, name, priceHistory, currentPrice}: St
 
   useEffect(() => {
     calculateGain()
-  }, [priceHistory])
+  }, [])
+
+  if(!priceHistory) {
+    return (
+      <></>
+    )
+  }
 
   return (
     <Card className={cn(["sm:w-80 w-100% h-44 dark bg-gradient-to-br from-black via-slate-900 to-black grid sm:grid-cols-2 grid-rows-1 border-none grid-cols-1"], className)}>
@@ -57,11 +62,11 @@ const StockCard = (({className, shortName, name, priceHistory, currentPrice}: St
         </CardContent>
       </div>
       <div>
-        <div className="sm:flex items-center justify-center hidden h-fit">
-          <CardFooter className="pl-0 pr-6 w-fit h-fit">
+        <div className="sm:flex items-center justify-center hidden h-full">
+          <CardFooter className="pl-0 w-fit h-fit">
             <div className="w-auto h-auto">
-              {/* <CandlestickChart /> */}
-              <img src="https://static.vecteezy.com/system/resources/previews/008/505/869/original/candlestick-graph-bar-design-stock-market-business-concept-png.png" alt="chart" />
+              <CandlestickChart priceHistory={priceHistory} />
+              {/* <img src="https://static.vecteezy.com/system/resources/previews/008/505/869/original/candlestick-graph-bar-design-stock-market-business-concept-png.png" alt="chart" /> */}
             </div>
           </CardFooter>
         </div>

@@ -67,7 +67,7 @@
 }
 
 svg rect[width="2"] {
-  fill: green;
+  fill: gray;
   width: 1px;
   margin-left: 1px;
 }
