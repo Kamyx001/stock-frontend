@@ -6,7 +6,7 @@ type CardGridProps = {
 
 const CardGrid: React.FC<CardGridProps> = (props) => {
   return (
-    <div className="p-0 mx-3 w-full flex flex-wrap items-start justify-evenly gap-3">
+    <div className="flex flex-wrap items-start w-full gap-3 p-0 justify-evenly">
       {props.children}
     </div>
   )

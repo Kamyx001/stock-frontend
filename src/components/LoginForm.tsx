@@ -13,18 +13,18 @@ import {
 
 const LoginForm = () => {
   return (
-    <div className="bg-black w-full max-w-2xl p-8 space-y-4 bg-opacity-80 rounded-xl shadow-lg backdrop-filter backdrop-blur-lg">
+    <div className="w-full max-w-2xl p-8 space-y-4 bg-black shadow-lg bg-opacity-80 rounded-xl backdrop-filter backdrop-blur-lg">
         <Tabs className="space-y-4" defaultValue="login" >
-          <h1 className="text-4xl font-bold text-white text-center">App</h1>
-          <TabsList className="dark grid w-full grid-cols-2">
+          <h1 className="text-4xl font-bold text-center text-white">Stock exchange simulator</h1>
+          <TabsList className="grid w-full grid-cols-2 dark">
             <TabsTrigger value="login">Login</TabsTrigger>
             <TabsTrigger value="signin">Sign in</TabsTrigger>
           </TabsList>
           <div className="space-y-4">
             <TabsContent value="login">
               <Card>
-                <CardHeader>
-                  <CardTitle>Login</CardTitle>
+                <CardHeader >
+                  <CardTitle >Login</CardTitle>
                   <CardDescription>
                     Login to your account.
                   </CardDescription>

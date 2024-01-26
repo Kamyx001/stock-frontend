@@ -50,10 +50,10 @@ const StockCard = (({className, shortName, name, priceHistory, currentPrice}: St
   }
 
   return (
-    <Card className={cn(["sm:w-80 w-100% h-44 dark bg-gradient-to-br from-black via-slate-900 to-black grid sm:grid-cols-2 grid-rows-1 border-none grid-cols-1"], className)}>
+    <Card className={cn(["sm:w-80 w-100% h-44 dark bg-gradient-to-br from-black via-slate-900 to-black grid sm:grid-cols-2 grid-rows-1 grid-cols-1"], className)}>
       <div>
         <CardHeader className="flex flex-col pb-0">
-          <CardTitle className=" text-3xl">{shortName}</CardTitle>
+          <CardTitle className="text-3xl ">{shortName}</CardTitle>
           <CardDescription>{name}</CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col">
@@ -62,11 +62,10 @@ const StockCard = (({className, shortName, name, priceHistory, currentPrice}: St
         </CardContent>
       </div>
       <div>
-        <div className="sm:flex items-center justify-center hidden h-full">
+        <div className="items-center justify-center hidden h-full sm:flex">
           <CardFooter className="pl-0 w-fit h-fit">
             <div className="w-auto h-auto">
               <CandlestickChart priceHistory={priceHistory} />
-              {/* <img src="https://static.vecteezy.com/system/resources/previews/008/505/869/original/candlestick-graph-bar-design-stock-market-business-concept-png.png" alt="chart" /> */}
             </div>
           </CardFooter>
         </div>

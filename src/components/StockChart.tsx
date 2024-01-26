@@ -34,36 +34,58 @@ const StockChart = ({priceHistory, currentPrice, numOfBars}: StockChartProps) =>
     }
   }
 
-  for (let i = Math.min(priceHistory.length,numOfBars); i > 0; i--) {
-    const date = (new Date(((new Date()).getTime())-50000*i))
-    data.push([`${date.getHours()}:${date.getMinutes()}`, priceHistory[i+1], priceHistory[i+1], priceHistory[i], priceHistory[i]])
+  for (let i = Math.max(0, priceHistory.length - numOfBars); i < priceHistory.length; i++) {
+    const date = new Date(new Date().getTime() - 100000 * (priceHistory.length - i));
+    let minutes = '';
+    if (date.getMinutes() < 10) {
+      minutes = `0${date.getMinutes()}`;
+    } else {
+      minutes = `${date.getMinutes()}`;
+    }
+    data.push([`${date.getHours()}:${minutes}`, priceHistory[i-1], priceHistory[i-1], priceHistory[i], priceHistory[i]]);
   }
 
-  console.log(data)
 
   const options = {
     seriesType: 'candlesticks',
     // series: {0: {type: 'line'}},
     legend: "none",
-    bar: { groupWidth: "90%" }, // Remove space between bars.
+    bar: { groupWidth: "80%" }, // Remove space between bars.
     candlestick: {
       fallingColor: { stroke: "#a52719", strokeWidth: 0, fill: "#eb1000" }, // red
       risingColor: { stroke: "#0f9d32", strokeWidth: 0, fill: "#0eba50" }, // green
     },
     backgroundColor: "transparent",
+    chartArea: {
+      width: "85%",
+      height: "83%",
+    },
+    vAxis: {
+      baselineColor: "white",
+      gridlines: {
+        color: "gray",
+      },
+      textStyle: {
+        color: "white",
+      },
+    },
+    hAxis: {
+      textStyle: {
+        color: "white",
+      },
+    },
   };
 
   return (
     <div>
-      {/* {chartData} */}
-      {currentPrice}
       <Chart 
-        width={'80vw'}
-        height={'80vh'}
+        width={'93vw'}
+        height={'50vh'}
         chartType="CandlestickChart"
         loader={<div>Loading Chart</div>}
         data={data}
         options={options}
+        className='p-0 m-0'
       />
     </div>
   )

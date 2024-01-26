@@ -60,7 +60,6 @@ const CandlestickChart = ({priceHistory}:CandlestickChartProps) => {
     data.push([`${i}`, priceHistory[i+1], priceHistory[i+1], priceHistory[i], priceHistory[i]])
   }
 
-  console.log(data);
 
   return (
     <div className='w-full h-full'>

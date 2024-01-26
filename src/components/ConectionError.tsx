@@ -20,8 +20,8 @@ export function ConectionError() {
     )
   }
   return (
-    <Alert variant="destructive" className="dark fixed w-96 bottom-5 right-5">
-      <ExclamationTriangleIcon className="h-4 w-4" />
+    <Alert variant="destructive" className="fixed dark w-96 bottom-5 right-5">
+      <ExclamationTriangleIcon className="w-4 h-4" />
       <AlertTitle>Error</AlertTitle>
       <AlertDescription>
         Can't connect to server

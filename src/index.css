@@ -1,6 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.grainy-gradient {
+  background: 
+  linear-gradient(
+    45deg,
+  hsl(80deg, 46%, 77%, 0.5) 0%,
+  hsl(112deg, 44%, 77%, 0.5) 10%,
+  hsl(143deg, 43%, 76%, 0.5) 20%,
+  hsl(175deg, 41%, 76%, 0.5) 30%,
+  hsl(206deg, 40%, 75%, 0.5) 40%,
+  hsl(238deg, 39%, 75%, 0.5) 50%,
+  hsl(262deg, 42%, 76%, 0.5) 60%,
+  hsl(287deg, 46%, 76%, 0.5) 70%,
+  hsl(311deg, 50%, 77%, 0.5) 80%,
+  hsl(336deg, 54%, 78%, 0.5) 90%,
+  hsl(0deg, 59%, 78%, 0.5) 100%
+  ),
+  url("data:image/svg+xml,%3C!-- svg: first layer --%3E%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='4' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
  
 @layer base {
   :root {
@@ -34,6 +53,18 @@
  
     --radius: 0.5rem;
   }
+
+  @layer utilities {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+   /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+  }
  
   .dark {
     --background: 222.2 84% 4.9%;
@@ -66,11 +97,11 @@
   }
 }
 
-svg rect[width="2"] {
+/* svg rect[width="2"] {
   fill: gray;
   width: 1px;
   margin-left: 1px;
-}
+} */
  
 @layer base {
   * {

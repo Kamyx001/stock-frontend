@@ -1,16 +1,18 @@
 
 import LoginForm from "@/components/LoginForm"
 import Logo from "@/components/Logo";
+import NavBar from "@/components/NavBar";
 
 function LoginPage() {
 
   return (
-    <>
-      <Logo />
-      <div className="dark min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 bg-opacity-50 backdrop-filter backdrop-blur-lg">
+    <div className="">
+      <NavBar />
+      {/* <Logo /> */}
+      <div className="flex items-center justify-center min-h-screen dark grainy-gradient">
         <LoginForm />
       </div>
-    </>
+    </div>
   )
 }
 
