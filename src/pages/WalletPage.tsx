@@ -24,7 +24,7 @@ const WalletPage = () => {
     getData()
     const interval = setInterval(() => {
       getData();
-    }, 10000);
+    }, 3000);
   
     // This function will be called when the component unmounts
     return () => {

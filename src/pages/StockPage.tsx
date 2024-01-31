@@ -56,7 +56,7 @@ const StockPage = () => {
     const interval = setInterval(() => {
       getStock();
       getData();
-    }, 10000);
+    }, 3000);
   
     // This function will be called when the component unmounts
     return () => {
